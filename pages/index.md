@@ -1,56 +1,231 @@
 ---
-title: Welcome to Evidence
+title: General Election Manpower Requirements
 ---
 
-<Details title='How to edit this page'>
+<Details title= General Election Manpower Requirements>
 
   This page can be found in your project at `/pages/index.md`. Make a change to the markdown file and save it to see the change take effect in your browser.
 </Details>
 
-```sql categories
-  select
-      category
-  from needful_things.orders
-  group by category
+
+# CENTRAL 1 ZONE 1
+
+```sql Central1Z1
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date, 
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z1%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
 ```
 
-<Dropdown data={categories} name=category value=category>
-    <DropdownOption value="%" valueLabel="All Categories"/>
-</Dropdown>
-
-<Dropdown name=year>
-    <DropdownOption value=% valueLabel="All Years"/>
-    <DropdownOption value=2019/>
-    <DropdownOption value=2020/>
-    <DropdownOption value=2021/>
-</Dropdown>
-
-```sql orders_by_category
-  select 
-      date_trunc('month', order_datetime) as month,
-      sum(sales) as sales_usd,
-      category
-  from needful_things.orders
-  where category like '${inputs.category.value}'
-  and date_part('year', order_datetime) like '${inputs.year.value}'
-  group by all
-  order by sales_usd desc
+```sql total_Central1Z1
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z1%'
+GROUP BY zone
 ```
 
-<BarChart
-    data={orders_by_category}
-    title="Sales by Month, {inputs.category.label}"
-    x=month
-    y=sales_usd
-    series=category
-/>
+<DataTable data={total_Central1Z1}/>
 
-## What's Next?
-- [Connect your data sources](settings)
-- Edit/add markdown files in the `pages` folder
-- Deploy your project with [Evidence Cloud](https://evidence.dev/cloud)
+<DataTable data={Central1Z1}/>
 
-## Get Support
-- Message us on [Slack](https://slack.evidence.dev/)
-- Read the [Docs](https://docs.evidence.dev/)
-- Open an issue on [Github](https://github.com/evidence-dev/evidence)
+# CENTRAL 1 ZONE 2
+
+```sql Central1Z2
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date,
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z2%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
+```
+
+```sql total_Central1Z2
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z2%'
+GROUP BY zone
+```
+
+<DataTable data={total_Central1Z2}/>
+
+<DataTable data={Central1Z2}/>
+
+# CENTRAL 1 ZONE 3
+
+```sql Central1Z3
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date,
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z3%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
+```
+
+```sql total_Central1Z3
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central1%'
+AND zone ILIKE 'z3%'
+GROUP BY zone
+```
+
+<DataTable data={total_Central1Z3}/>
+
+<DataTable data={Central1Z3}/>
+
+# CENTRAL 2 ZONE 4
+
+```sql Central2Z4
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date,
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central2%'
+AND zone ILIKE 'z4%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
+```
+
+```sql total_Central2Z4
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central2%'
+AND zone ILIKE 'z4%'
+GROUP BY zone
+```
+
+<DataTable data={total_Central2Z4}/>
+
+<DataTable data={Central2Z4}/>
+
+# CENTRAL 2 ZONE 5
+
+```sql Central2Z5
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date,
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central2'
+AND zone ILIKE 'z5%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
+```
+
+```sql total_Central2Z5
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central2%'
+AND zone ILIKE 'z5%'
+GROUP BY zone
+```
+
+<DataTable data={total_Central2Z5}/>
+
+<DataTable data={Central2Z5}/>
+
+# CENTRAL 2 ZONE 6
+
+```sql Central2Z6
+Select 
+Loc_type,
+zone,
+STRFTIME(
+    STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y'),
+    '%d %b') AS parsed_date,
+Start_shift,
+end_shift,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+from ge_location
+WHERE sector ILIKE 'central2%'
+AND zone ILIKE 'z6%'
+GROUP BY DATE,loc_type, zone, start_shift, end_shift
+ORDER BY zone, STRPTIME(REPLACE(REPLACE(LOWER(date), '_', '-'), ' ', '-') || '-2000', '%d-%b-%Y')
+```
+
+```sql total_Central2Z6
+SELECT 
+zone,
+SUM(Saro_IC) AS Total_num_SaroIC,
+SUM(Log_ic) AS Total_num_LogIC,
+SUM(crew) AS Total_num_Crew
+FROM ge_location
+WHERE sector ILIKE 'central2%'
+AND zone ILIKE 'z6%'
+GROUP BY zone
+```
+
+<DataTable data={total_Central2Z6}/>
+
+<DataTable data={Central2Z6}/>
