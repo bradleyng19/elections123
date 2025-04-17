@@ -1,0 +1,1 @@
+select * from ge_location
