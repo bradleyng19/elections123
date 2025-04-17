@@ -1,0 +1,5 @@
+# This file was automatically generated
+name: ge_location
+type: duckdb
+options:
+  filename: ge_location.duckdb
